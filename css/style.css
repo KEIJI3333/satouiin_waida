@@ -228,6 +228,10 @@ a { color: inherit; text-decoration: none; }
   object-fit: cover;
   border-radius: 50%;
 }
+.staff-photo-sato { object-position: 91% center; }
+.staff-photo-suzuki { object-position: 100% center; }
+.staff-photo-takahashi { object-position: 48% center; }
+.staff-photo-yamamoto { object-position: 0% center; }
 .lead-staff {
   display: block;
   width: 680px;
