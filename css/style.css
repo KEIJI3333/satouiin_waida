@@ -375,10 +375,11 @@ a { color: inherit; text-decoration: none; }
   background: #eaf5f3;
 }
 .news-section {
-  height: 822px;
+  height: auto;
   padding: 59px 0 58px;
 }
 .news-list li { margin-bottom: 30px; }
+.news-list li:last-child { margin-bottom: 0; }
 .news-list p { font-size: 13.5px; line-height: 1.78; }
 
 .greeting-section {
