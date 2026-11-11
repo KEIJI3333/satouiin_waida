@@ -16,7 +16,12 @@
       <a class="brand" href="#top" aria-label="佐藤医院 トップへ">
         <img src="./assets/logo.png" alt="佐藤医院 Sato Clinic">
       </a>
-      <nav class="global-nav" aria-label="グローバルナビゲーション">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="global-nav" aria-label="メニューを開く">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="global-nav" id="global-nav" aria-label="グローバルナビゲーション" hidden>
         <a href="#top">トップ</a>
         <a href="#hours">診療時間</a>
         <a href="#news">お知らせ</a>
@@ -215,5 +220,31 @@
   <footer class="site-footer">
     <p>© 佐藤医院</p>
   </footer>
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const globalNav = document.querySelector('#global-nav');
+
+    function setMenuOpen(open) {
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+      globalNav.hidden = !open;
+    }
+
+    menuToggle.addEventListener('click', () => {
+      setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true');
+    });
+    globalNav.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuOpen(false);
+    });
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.header-inner')) setMenuOpen(false);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !globalNav.hidden) {
+        setMenuOpen(false);
+        menuToggle.focus();
+      }
+    });
+  </script>
 </body>
 </html>
