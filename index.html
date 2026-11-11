@@ -37,6 +37,17 @@
     <section class="hero" aria-label="佐藤医院 外観">
       <img src="./assets/hero.jpg" alt="佐藤医院の外観">
       <div class="hero-copy">地域に根差した医療</div>
+      <script>
+        const heroCopy = document.querySelector('.hero-copy');
+        const heroCharacters = Array.from(heroCopy.textContent, (character, index) => {
+          const span = document.createElement('span');
+          span.className = 'hero-character';
+          span.textContent = character;
+          span.style.animationDelay = `${index * 0.1}s`;
+          return span;
+        });
+        heroCopy.replaceChildren(...heroCharacters);
+      </script>
     </section>
 
     <section class="hours-section tint-section" id="hours">
