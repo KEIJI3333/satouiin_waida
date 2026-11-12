@@ -532,10 +532,12 @@ a { color: inherit; text-decoration: none; }
   overflow-wrap: break-word;
 }
 .medical-detail .medical-card:nth-child(n+5) img {
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
-  background: #f5faf8;
 }
+.medical-detail .medical-card:nth-child(5) img { object-position: 60% center; }
+.medical-detail .medical-card:nth-child(6) img { object-position: 20% center; }
+.medical-detail .medical-card:nth-child(7) img { object-position: 45% center; }
 
 .about-section {
   height: 752px;
