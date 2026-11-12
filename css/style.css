@@ -643,6 +643,14 @@ a { color: inherit; text-decoration: none; }
   align-self: auto;
   width: 445px;
 }
+.staff-section .staff-row:not(.lead-staff) li {
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+.staff-section .staff-row:not(.lead-staff) .staff-phrase {
+  display: inline-block;
+  text-align: left;
+}
 
 .access-section {
   height: auto;
