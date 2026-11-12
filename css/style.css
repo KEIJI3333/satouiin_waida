@@ -635,6 +635,15 @@ a { color: inherit; text-decoration: none; }
 }
 .staff-section .lead-staff img { margin: 0 auto 24px; }
 
+.staff-section .staff-row:not(.lead-staff) {
+  align-items: center;
+  gap: 65px;
+}
+.staff-section .staff-row:not(.lead-staff) .staff-text {
+  align-self: auto;
+  width: 445px;
+}
+
 .access-section {
   height: 999px;
   padding: 54px 0 58px;
