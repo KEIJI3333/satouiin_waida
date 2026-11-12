@@ -96,11 +96,16 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
 }
 .hero > img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 54%;
+  opacity: 0;
+  transition: opacity 1s ease;
 }
+.hero > img.is-active { opacity: 1; }
 .hero-copy {
   position: absolute;
   left: calc(50% - 440px);
@@ -121,6 +126,7 @@ a { color: inherit; text-decoration: none; }
   to { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .hero > img { transition: none; }
   .hero-copy .hero-character { animation: none; }
 }
 

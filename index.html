@@ -34,8 +34,10 @@
   </header>
 
   <main id="top">
-    <section class="hero" aria-label="佐藤医院 外観">
-      <img src="./assets/hero.jpg" alt="佐藤医院の外観">
+    <section class="hero" aria-label="佐藤医院の写真">
+      <img class="hero-slide is-active" src="./assets/hero.jpg" alt="佐藤医院の外観" aria-hidden="false">
+      <img class="hero-slide" src="./assets/hospital_2.jpg" alt="佐藤医院の写真" aria-hidden="true">
+      <img class="hero-slide" src="./assets/hospital_6.jpg" alt="佐藤医院の写真" aria-hidden="true">
       <div class="hero-copy">地域に根差した医療</div>
       <script>
         const heroCopy = document.querySelector('.hero-copy');
@@ -47,6 +49,17 @@
           return span;
         });
         heroCopy.replaceChildren(...heroCharacters);
+
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        let currentHeroSlide = 0;
+
+        setInterval(() => {
+          heroSlides[currentHeroSlide].classList.remove('is-active');
+          heroSlides[currentHeroSlide].setAttribute('aria-hidden', 'true');
+          currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+          heroSlides[currentHeroSlide].classList.add('is-active');
+          heroSlides[currentHeroSlide].setAttribute('aria-hidden', 'false');
+        }, 5000);
       </script>
     </section>
 
