@@ -619,6 +619,13 @@ a { color: inherit; text-decoration: none; }
   overflow-wrap: break-word;
   letter-spacing: normal;
 }
+.staff-text ul { padding-left: 1.25em; list-style-position: outside; }
+.staff-text li > strong {
+  display: inline-block;
+  white-space: nowrap;
+  text-align: left;
+}
+.staff-text .staff-phrase { white-space: nowrap; }
 
 .access-section {
   height: 999px;
