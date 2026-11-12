@@ -697,12 +697,18 @@ a { color: inherit; text-decoration: none; }
   width: 700px;
   font-size: 18px;
   line-height: 1.8;
-  text-align: left;
+  text-align: center;
   line-break: strict;
   word-break: normal;
   overflow-wrap: break-word;
 }
-.access-section .access-text ul { display: block; margin: 12px 0; }
+.access-section .access-text ul {
+  display: block;
+  margin: 12px 0;
+  padding: 0;
+  list-style-position: inside;
+  text-align: center;
+}
 .access-section .contact-block { margin-top: 18px; font-size: 19px; }
 
 .site-footer { height: 100px; }
