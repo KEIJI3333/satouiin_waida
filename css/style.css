@@ -651,6 +651,29 @@ a { color: inherit; text-decoration: none; }
   display: inline-block;
   text-align: left;
 }
+.staff-section .staff-text-takahashi .staff-term,
+.staff-section .staff-text-yamamoto .staff-term {
+  display: inline-block;
+  white-space: nowrap;
+  text-align: left;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+.staff-section .staff-text-yamamoto {
+  line-height: 2;
+  transform: translateY(-12px);
+}
+.staff-section .staff-text-yamamoto h3 {
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+.staff-section .staff-text-yamamoto li {
+  margin: 8px 0;
+  text-align: left;
+  text-align-last: left;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
 
 .access-section {
   height: auto;
