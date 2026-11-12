@@ -589,9 +589,10 @@ a { color: inherit; text-decoration: none; }
 }
 .lead-staff .staff-text { width: 720px; }
 .staff-row {
-  width: 760px;
+  width: 880px;
   min-height: 370px;
-  gap: 64px;
+  align-items: flex-start;
+  gap: 40px;
   margin-bottom: 56px;
 }
 .staff-row img {
@@ -599,7 +600,8 @@ a { color: inherit; text-decoration: none; }
   height: 370px;
 }
 .staff-text {
-  width: 326px;
+  width: 470px;
+  min-width: 0;
   align-self: flex-start;
   font-size: 16px;
   line-height: 1.8;
@@ -626,6 +628,12 @@ a { color: inherit; text-decoration: none; }
   text-align: left;
 }
 .staff-text .staff-phrase { white-space: nowrap; }
+
+.staff-section .lead-staff {
+  display: block;
+  min-height: 0;
+}
+.staff-section .lead-staff img { margin: 0 auto 24px; }
 
 .access-section {
   height: 999px;
