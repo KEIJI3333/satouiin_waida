@@ -549,10 +549,11 @@ a { color: inherit; text-decoration: none; }
 .medical-detail .medical-card:nth-child(7) img { object-position: 45% center; }
 
 .about-section {
-  height: 752px;
+  height: auto;
   padding: 58px 0 60px;
   background: #eaf5f3;
 }
+.about-section .section-title { font-size: 30px; }
 .about-photo {
   width: 880px;
   height: 325px;
@@ -560,8 +561,15 @@ a { color: inherit; text-decoration: none; }
 }
 .about-section p {
   width: 760px;
-  font-size: 13.5px;
-  line-height: 1.8;
+  font-size: 16px;
+  line-height: 1.9;
+  text-align: justify;
+  text-align-last: left;
+  text-justify: inter-character;
+  line-break: strict;
+  word-break: normal;
+  overflow-wrap: break-word;
+  letter-spacing: normal;
 }
 
 .staff-section {
