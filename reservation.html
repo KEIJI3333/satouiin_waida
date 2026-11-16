@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web予約 | 佐藤医院</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/responsive.css">
+</head>
+<body class="clinic-subpage">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./index.html" aria-label="佐藤医院 トップへ">
+        <img src="./assets/logo.png" alt="佐藤医院 Sato Clinic">
+      </a>
+    </div>
+  </header>
+
+  <main class="clinic-page">
+    <h1>Web予約</h1>
+    <p>ご希望の日付をカレンダーからお選びください。</p>
+    <p class="learning-notice">こちらは学習用の予約画面です。実際の予約受付は行っておりません。</p>
+    <section class="reservation-calendar" aria-labelledby="calendar-month">
+      <div class="calendar-navigation">
+        <button type="button" id="calendar-previous" aria-label="前月を表示">前月</button>
+        <h2 id="calendar-month" aria-live="polite"></h2>
+        <button type="button" id="calendar-next" aria-label="翌月を表示">翌月</button>
+      </div>
+      <table class="calendar-table" aria-labelledby="calendar-month">
+        <thead>
+          <tr><th scope="col">日</th><th scope="col">月</th><th scope="col">火</th><th scope="col">水</th><th scope="col">木</th><th scope="col">金</th><th scope="col">土</th></tr>
+        </thead>
+        <tbody id="calendar-days"></tbody>
+      </table>
+      <p class="calendar-legend">枠線は本日、緑の背景は選択した日付です。過去の日付は選択できません。空き状況を示すものではありません。</p>
+      <p class="calendar-selection" id="calendar-selection" role="status">日付は選択されていません。</p>
+    </section>
+    <noscript><p>日付を選択するには、JavaScriptを有効にしてください。</p></noscript>
+    <a class="clinic-back-link" href="./index.html#hours">トップページへ戻る</a>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 佐藤医院</p>
+    <p class="site-disclaimer">本サイトは職業訓練の学習用に制作した架空のサンプルサイトです。掲載している医院・人物・連絡先・所在地はすべて架空であり、実在のものとは関係ありません。</p>
+  </footer>
+  <script>
+    (() => {
+      const monthHeading = document.querySelector('#calendar-month');
+      const days = document.querySelector('#calendar-days');
+      const selection = document.querySelector('#calendar-selection');
+      const now = new Date();
+      let visibleMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+      let selectedDate = '';
+
+      function dateKey(date) {
+        return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+      }
+
+      function renderCalendar() {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const year = visibleMonth.getFullYear();
+        const month = visibleMonth.getMonth();
+        monthHeading.textContent = `${year}年${month + 1}月`;
+        days.replaceChildren();
+        const firstWeekday = visibleMonth.getDay();
+        const lastDay = new Date(year, month + 1, 0).getDate();
+        const cellCount = Math.ceil((firstWeekday + lastDay) / 7) * 7;
+        let row;
+
+        for (let cell = 0; cell < cellCount; cell++) {
+          if (cell % 7 === 0) {
+            row = document.createElement('tr');
+            days.append(row);
+          }
+          const td = document.createElement('td');
+          row.append(td);
+          const day = cell - firstWeekday + 1;
+          if (day < 1 || day > lastDay) continue;
+          const date = new Date(year, month, day);
+          const key = dateKey(date);
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'calendar-day';
+          button.textContent = day;
+          button.dataset.date = key;
+          button.setAttribute('aria-label', `${year}年${month + 1}月${day}日`);
+          button.setAttribute('aria-pressed', String(key === selectedDate));
+          if (key === dateKey(today)) button.setAttribute('aria-current', 'date');
+          button.disabled = date < today;
+          td.append(button);
+        }
+      }
+
+      document.querySelector('#calendar-previous').addEventListener('click', () => {
+        visibleMonth = new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() - 1, 1);
+        renderCalendar();
+      });
+      document.querySelector('#calendar-next').addEventListener('click', () => {
+        visibleMonth = new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() + 1, 1);
+        renderCalendar();
+      });
+      days.addEventListener('click', (event) => {
+        const button = event.target.closest('.calendar-day');
+        if (!button || button.disabled) return;
+        const currentDay = new Date();
+        currentDay.setHours(0, 0, 0, 0);
+        if (button.dataset.date < dateKey(currentDay)) {
+          renderCalendar();
+          return;
+        }
+        selectedDate = button.dataset.date;
+        days.querySelectorAll('.calendar-day').forEach(day => {
+          day.setAttribute('aria-pressed', String(day === button));
+        });
+        selection.textContent = `選択した日付：${selectedDate.replaceAll('-', '.')}（予約は確定していません）`;
+      });
+      renderCalendar();
+    })();
+  </script>
+</body>
+</html>
