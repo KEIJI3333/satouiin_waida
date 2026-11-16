@@ -766,9 +766,10 @@ a { color: inherit; text-decoration: none; }
   color: #fff;
   font-weight: 500;
 }
-.hours-faq-link { color: #368E84; text-decoration: underline; text-underline-offset: 4px; }
+.hours-faq-link { font-size: 16px; color: #368E84; text-decoration: underline; text-underline-offset: 4px; }
 .hours-reservation-button:hover { background: #fff; color: #368E84; }
-.hours-actions a:focus-visible { outline: 2px solid #368E84; outline-offset: 4px; }
+.hours-actions a:focus-visible,
+.hours-faq-link:focus-visible { outline: 2px solid #368E84; outline-offset: 4px; }
 
 /* Reservation and FAQ pages only. */
 .clinic-subpage { min-width: 0; }
