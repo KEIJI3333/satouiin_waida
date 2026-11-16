@@ -173,6 +173,21 @@
   .hours-notes { text-align: left; }
 
   .news-list a { padding: 18px 4px; gap: 12px; }
+  .news-section .news-list a {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr) max-content;
+    column-gap: 3px;
+    padding-inline: 0;
+  }
+  .news-section .news-list .news-list-date {
+    font-variant-numeric: tabular-nums;
+    line-height: 24px;
+    letter-spacing: normal;
+  }
+  .news-section .news-list .news-list-title {
+    text-align: left;
+    letter-spacing: normal;
+  }
   .news-arrow { font-size: 24px; }
   .greeting-photo { border-radius: 20px; }
   .greeting-copy p:not(.signature),
