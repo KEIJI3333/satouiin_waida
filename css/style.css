@@ -737,3 +737,13 @@ a { color: inherit; text-decoration: none; }
   font-size: 14px;
   line-height: 1.6;
 }
+
+.news-list .news-list-date {
+  flex-shrink: 0;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.news-list .news-list-title {
+  flex: 1;
+  min-width: 0;
+}
